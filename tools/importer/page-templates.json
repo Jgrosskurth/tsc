@@ -1,0 +1,173 @@
+{
+  "templates": [
+    {
+      "name": "homepage",
+      "urls": [
+        "https://www.tractorsupply.com/"
+      ],
+      "description": "Tractor Supply Company homepage with hero banners, commerce product grids, category navigation, promotional content, and brand messaging",
+      "sections": [
+        {
+          "id": "section-hero",
+          "name": "Hero Section",
+          "selector": "main > div:nth-child(2)",
+          "style": null,
+          "blocks": ["carousel"],
+          "defaultContent": []
+        },
+        {
+          "id": "section-categories",
+          "name": "Popular Categories",
+          "selector": "main > div:nth-child(3)",
+          "style": null,
+          "blocks": ["cards-categories"],
+          "defaultContent": ["h2"]
+        },
+        {
+          "id": "section-promo-1",
+          "name": "Demo Days Promo",
+          "selector": "main a[href*='demo-days'][href*='banner']",
+          "style": null,
+          "blocks": [],
+          "defaultContent": ["linked-image"]
+        },
+        {
+          "id": "section-tile-pet",
+          "name": "Pet Content Tile",
+          "selector": "main a[href*='pet-ready-for-spring']",
+          "style": null,
+          "blocks": ["columns"],
+          "defaultContent": []
+        },
+        {
+          "id": "section-promo-alpo",
+          "name": "ALPO Promo",
+          "selector": "main a[href*='ALPO']",
+          "style": null,
+          "blocks": [],
+          "defaultContent": ["linked-image"]
+        },
+        {
+          "id": "section-tile-garden",
+          "name": "Garden Content Tile",
+          "selector": "main a[href*='lawn-garden'][href*='dabbler']",
+          "style": null,
+          "blocks": ["columns"],
+          "defaultContent": []
+        },
+        {
+          "id": "section-promo-patio",
+          "name": "Patio Furniture Promo",
+          "selector": "main a[href*='patio-furniture']",
+          "style": null,
+          "blocks": [],
+          "defaultContent": ["linked-image"]
+        },
+        {
+          "id": "section-tile-chick",
+          "name": "Chick Days Tile",
+          "selector": "main a[href*='chick-days'][href*='tile']",
+          "style": null,
+          "blocks": ["columns"],
+          "defaultContent": []
+        },
+        {
+          "id": "section-promo-financing",
+          "name": "Financing Promo",
+          "selector": "main a[href*='credit'][href*='financing']",
+          "style": null,
+          "blocks": [],
+          "defaultContent": ["linked-image"]
+        },
+        {
+          "id": "section-tile-trailers",
+          "name": "Trailers Tile",
+          "selector": "main a[href*='trailers-towing'][href*='tile']",
+          "style": null,
+          "blocks": ["columns"],
+          "defaultContent": []
+        },
+        {
+          "id": "section-featured-services",
+          "name": "Featured Services",
+          "selector": "[class*='featured']",
+          "style": "tsc-red",
+          "blocks": ["cards"],
+          "defaultContent": []
+        },
+        {
+          "id": "section-enrollment",
+          "name": "Neighbors Club Enrollment",
+          "selector": "main a[href*='AccountDashboard']",
+          "style": null,
+          "blocks": [],
+          "defaultContent": ["linked-image"]
+        },
+        {
+          "id": "section-brands",
+          "name": "Popular Brands",
+          "selector": "div:has(h2:contains('Brands'))",
+          "style": null,
+          "blocks": ["cards-brands"],
+          "defaultContent": ["h2"]
+        },
+        {
+          "id": "section-smart-supply",
+          "name": "Smart Supply",
+          "selector": "div:has(a[href*='autoship'])",
+          "style": null,
+          "blocks": ["columns"],
+          "defaultContent": []
+        },
+        {
+          "id": "section-store-services",
+          "name": "Store Services",
+          "selector": "div:has(h2:contains('Store Services'))",
+          "style": null,
+          "blocks": ["cards-services"],
+          "defaultContent": ["h2"]
+        },
+        {
+          "id": "section-disclaimers",
+          "name": "Legal Disclaimers",
+          "selector": "main > div:last-child",
+          "style": null,
+          "blocks": [],
+          "defaultContent": ["paragraphs"]
+        }
+      ],
+      "blocks": [
+        {
+          "name": "carousel",
+          "instances": ["main > div:nth-child(2)"]
+        },
+        {
+          "name": "cards-categories",
+          "instances": ["[class*='popular-categories'] ul, main > div:nth-child(3) ul"]
+        },
+        {
+          "name": "columns",
+          "instances": [
+            "main a[href*='pet-ready-for-spring']",
+            "main a[href*='lawn-garden'][href*='dabbler']",
+            "main a[href*='chick-days'][href*='tile']",
+            "main a[href*='trailers-towing'][href*='tile']",
+            "main div:has(> a[href*='autoship'])"
+          ]
+        },
+        {
+          "name": "cards",
+          "instances": ["[class*='featured'] article"]
+        },
+        {
+          "name": "cards-brands",
+          "instances": ["div:has(h2:contains('Brands')) ul"]
+        },
+        {
+          "name": "cards-services",
+          "instances": ["div:has(h2:contains('Store Services'))"]
+        }
+      ]
+    }
+  ]
+}
