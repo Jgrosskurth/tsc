@@ -34,7 +34,7 @@
   justify-content: center;
   position: relative;
   width: 100%;
-  min-height: min(50vw, calc(100dvh - var(--header-height)));
+  min-height: min(50vw, calc(100dvh - var(--nav-height)));
 }
 
 .carousel .carousel-slide .carousel-slide-image picture {
@@ -50,11 +50,37 @@
 
 .carousel .carousel-slide .carousel-slide-content {
   z-index: 1;
-  margin: 24px;
-  padding: 16px;
-  color: white;
-  background-color: rgba(19 19 19 / 75%);
+  margin: 16px;
+  padding: 20px;
+  color: #fff;
+  background-color: rgb(160 40 23 / 85%);
   position: relative;
+  border-radius: 8px;
+}
+
+.carousel .carousel-slide .carousel-slide-content h2 {
+  font-family: var(--heading-font-family);
+  font-weight: 700;
+  color: #fff;
+  margin-top: 0;
+}
+
+.carousel .carousel-slide .carousel-slide-content p {
+  color: #fff;
+}
+
+.carousel .carousel-slide .carousel-slide-content a.button:any-link {
+  background-color: #fff;
+  color: var(--tsc-red);
+  border-color: #fff;
+  border-radius: 100px;
+  padding: 12px 24px;
+  font-weight: 700;
+}
+
+.carousel .carousel-slide .carousel-slide-content a.button:hover {
+  background-color: var(--tsc-cream);
+  border-color: var(--tsc-cream);
 }
 
 .carousel .carousel-slide-indicators {
@@ -68,8 +94,8 @@
 }
 
 .carousel .carousel-slide-indicator button {
-  width: 24px;
-  height: 24px;
+  width: 12px;
+  height: 12px;
   margin: 0;
   padding: 0;
   border-radius: 50%;
@@ -80,7 +106,7 @@
 .carousel .carousel-slide-indicator button:disabled,
 .carousel .carousel-slide-indicator button:hover,
 .carousel .carousel-slide-indicator button:focus-visible {
-  background-color: var(--text-color);
+  background-color: var(--tsc-red);
 }
 
 .carousel .carousel-navigation-buttons {
@@ -103,19 +129,19 @@
   margin: 0;
   border-radius: 50%;
   padding: 0;
-  background-color: rgba(19 19 19 / 25%);
+  background-color: rgb(255 255 255 / 80%);
   transition: background-color 0.2s;
 }
 
 .carousel .carousel-navigation-buttons button:hover,
 .carousel .carousel-navigation-buttons button:focus-visible {
-  background-color: rgba(19 19 19 / 75%);
+  background-color: rgb(255 255 255 / 100%);
 }
 
 .carousel .carousel-navigation-buttons button::after {
   display: block;
   content: '';
-  border: 2px solid white;
+  border: 2px solid var(--tsc-red);
   border-bottom: 0;
   border-left: 0;
   height: 12px;
@@ -138,6 +164,7 @@
   }
 
   .carousel .carousel-slide .carousel-slide-content {
-    margin: 68px;
+    margin: 40px;
+    max-width: 400px;
   }
 }

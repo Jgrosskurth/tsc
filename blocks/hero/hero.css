@@ -7,13 +7,41 @@
   position: relative;
   padding: 40px 24px;
   min-height: 300px;
+  display: flex;
+  align-items: center;
 }
 
 .hero h1 {
   max-width: 1200px;
   margin-left: auto;
   margin-right: auto;
-  color: var(--background-color);
+  color: #fff;
+  font-family: var(--heading-font-family);
+  font-weight: 700;
+}
+
+.hero h2 {
+  color: #fff;
+  font-family: var(--heading-font-family);
+  font-weight: 700;
+}
+
+.hero p {
+  color: #fff;
+}
+
+.hero a.button:any-link {
+  background-color: var(--tsc-red);
+  color: #fff;
+  border-color: var(--tsc-red);
+  border-radius: 100px;
+  padding: 12px 24px;
+  font-weight: 700;
+}
+
+.hero a.button:hover {
+  background-color: var(--link-hover-color);
+  border-color: var(--link-hover-color);
 }
 
 .hero picture {
@@ -32,6 +60,7 @@
 
 @media (width >= 900px) {
   .hero {
-    padding: 40px 32px;
+    padding: 60px 32px;
+    min-height: 400px;
   }
 }

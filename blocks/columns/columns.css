@@ -19,11 +19,36 @@
   display: block;
 }
 
+.columns h3 {
+  font-family: var(--heading-font-family);
+  font-weight: 700;
+  color: var(--tsc-red);
+  margin-top: 8px;
+}
+
+.columns p {
+  font-size: var(--body-font-size-m);
+  line-height: 1.5;
+}
+
+.columns a.button:any-link {
+  background-color: var(--tsc-red);
+  color: #fff;
+  border-radius: 100px;
+  padding: 12px 24px;
+  font-weight: 700;
+  font-size: var(--body-font-size-s);
+}
+
+.columns a.button:hover {
+  background-color: var(--link-hover-color);
+}
+
 @media (width >= 900px) {
   .columns > div {
     align-items: center;
     flex-direction: unset;
-    gap: 24px;
+    gap: 32px;
   }
 
   .columns > div > div {
