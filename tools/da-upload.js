@@ -208,10 +208,6 @@
   for (let i = 0; i < imageEntries.length; i++) {
     const [daPath, sourceUrl] = imageEntries[i];
     const shortName = daPath.split('/').pop();
-    process.stdout && process.stdout.write
-      ? process.stdout.write(`  [${i + 1}/${imageEntries.length}] ${shortName}...`)
-      : console.log(`  [${i + 1}/${imageEntries.length}] ${shortName}...`);
-
     const ok = await fetchAndUpload(sourceUrl, daPath);
     if (ok) {
       uploaded++;
