@@ -223,6 +223,7 @@ main > .section:has(.columns):has(.product-carousel) {
     max-width: unset;
     padding: 0;
     margin: 0;
+    min-width: 0;
   }
 
   /* Product carousel on the left (order 1) */
@@ -232,6 +233,7 @@ main > .section:has(.columns):has(.product-carousel) {
     flex-direction: column;
     justify-content: center;
     padding: 20px 16px 20px 24px;
+    min-width: 0;
   }
 
   /* Feature tile on the right (order 2) */
