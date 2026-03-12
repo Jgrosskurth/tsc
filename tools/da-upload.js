@@ -31,8 +31,21 @@
   const DA_SOURCE = `https://admin.da.live/source/${OWNER}/${REPO}`;
   const AEM_ADMIN = `https://admin.hlx.page/preview/Jgrosskurth/${REPO}/main`;
 
+  // Helper: delete existing content from DA
+  async function del(path) {
+    const resp = await fetch(`${DA_SOURCE}/${path}`, {
+      method: 'DELETE',
+      headers: { Authorization: `Bearer ${token}` },
+    });
+    console.log(`Delete ${path}: ${resp.status} ${resp.statusText}`);
+    return resp.ok;
+  }
+
   // Helper: upload HTML to DA
   async function upload(path, html) {
+    // Delete first to ensure clean overwrite
+    await del(path);
+
     const blob = new Blob([html], { type: 'text/html' });
     const form = new FormData();
     form.append('data', blob);
