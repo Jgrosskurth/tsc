@@ -34,7 +34,8 @@
   justify-content: center;
   position: relative;
   width: 100%;
-  min-height: min(50vw, 520px);
+  min-height: 0;
+  aspect-ratio: 1440 / 480;
 }
 
 .carousel .carousel-slide .carousel-slide-image picture {
@@ -48,14 +49,16 @@
   object-fit: cover;
 }
 
+/* Hide text overlay — hero images already contain promotional text */
 .carousel .carousel-slide .carousel-slide-content {
-  z-index: 1;
-  margin: 16px;
-  padding: 20px;
-  color: #fff;
-  background-color: rgb(160 40 23 / 85%);
-  position: relative;
-  border-radius: 8px;
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  padding: 0;
+  margin: -1px;
+  overflow: hidden;
+  clip: rect(0, 0, 0, 0);
+  border: 0;
 }
 
 .carousel .carousel-slide .carousel-slide-content h2 {
@@ -163,8 +166,15 @@
     right: 24px;
   }
 
+  /* Keep sr-only on desktop — hero images contain baked-in text */
   .carousel .carousel-slide .carousel-slide-content {
-    margin: 40px;
-    max-width: 400px;
+    position: absolute;
+    width: 1px;
+    height: 1px;
+    padding: 0;
+    margin: -1px;
+    overflow: hidden;
+    clip: rect(0, 0, 0, 0);
+    border: 0;
   }
 }

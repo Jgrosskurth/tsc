@@ -9,7 +9,11 @@ footer .footer {
   margin: auto;
 }
 
-/* Footer link columns section */
+/* Footer link columns section - explicit red background */
+footer .footer .section.columns-container {
+  background-color: var(--tsc-red);
+}
+
 footer .footer .columns-wrapper {
   padding: 48px 24px 24px;
 }
@@ -62,15 +66,15 @@ footer .footer .columns ul li {
 }
 
 /* Copyright / bottom bar section */
-/* stylelint-disable-next-line no-descending-specificity */
-footer .footer > div:last-child {
+footer .footer .section:not(.columns-container) {
   background-color: var(--light-color);
   padding: 20px 24px;
   margin: 0;
   max-width: unset;
 }
 
-footer .footer > div:last-child p {
+/* stylelint-disable-next-line no-descending-specificity */
+footer .footer .section:not(.columns-container) p {
   color: var(--text-color);
   font-size: var(--body-font-size-xs);
   text-align: center;
@@ -78,13 +82,13 @@ footer .footer > div:last-child p {
   line-height: 1.6;
 }
 
-footer .footer > div:last-child a:any-link {
+footer .footer .section:not(.columns-container) a:any-link {
   color: var(--text-color);
   font-size: var(--body-font-size-xs);
   font-weight: 400;
 }
 
-footer .footer > div:last-child a:hover {
+footer .footer .section:not(.columns-container) a:hover {
   text-decoration: underline;
 }
 

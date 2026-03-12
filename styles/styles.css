@@ -145,7 +145,7 @@ pre {
 }
 
 main > div {
-  margin: 40px 16px;
+  margin: 0 16px;
 }
 
 input,
@@ -306,12 +306,18 @@ main > .section {
 main > .section > div {
   max-width: 1200px;
   margin: auto;
-  padding: 16px 24px;
+  padding: 12px 24px;
+}
+
+/* Carousel section: full-bleed, no padding */
+main > .section.carousel-container > .carousel-wrapper {
+  max-width: unset;
+  padding: 0;
 }
 
 @media (width >= 900px) {
   main > .section > div {
-    padding: 16px 32px;
+    padding: 12px 32px;
   }
 }
 
@@ -380,8 +386,9 @@ main .section.disclaimer p {
 /* Section headings (Shop Popular Categories, etc.) */
 /* stylelint-disable-next-line no-descending-specificity */
 main > .section > div > h2 {
-  font-size: var(--heading-font-size-xl);
-  margin-bottom: 16px;
+  font-size: var(--heading-font-size-l);
+  margin-top: 24px;
+  margin-bottom: 12px;
 }
 
 /* Olive-green background for services (overlay) cards */
@@ -390,8 +397,18 @@ main > .section:has(.cards.services) {
   padding: 24px 0;
 }
 
+/* Store Services section */
+main > .section:has(.cards.store-services) > .default-content-wrapper {
+  padding-bottom: 0;
+}
+
 /* hide metadata block from rendering */
 main .section > div.metadata-wrapper {
+  display: none;
+}
+
+/* hide metadata section */
+main > .section.metadata {
   display: none;
 }
 
@@ -410,5 +427,10 @@ main > .section > div > p > a > picture > img {
 /* Banner-only sections: remove padding, full bleed */
 main > .section > div.default-content-wrapper:has(> p > a > picture):not(:has(h1, h2, h3, h4, ul, ol)) {
   max-width: unset;
+  padding: 0;
+}
+
+/* Ensure banner-only section wrappers have no extra space */
+main > .section:has(> .default-content-wrapper > p > a > picture):not(:has(h1, h2, h3, h4, .block)) {
   padding: 0;
 }
