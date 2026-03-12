@@ -4,51 +4,94 @@ footer {
   font-size: var(--body-font-size-s);
 }
 
-footer .footer > div {
-  margin: auto;
+footer .footer {
   max-width: 1200px;
+  margin: auto;
+}
+
+/* Footer link columns section */
+footer .footer .columns-wrapper {
   padding: 40px 24px 24px;
 }
 
-footer .footer h3 {
+footer .footer .columns h3 {
   font-family: var(--heading-font-family);
   font-size: var(--heading-font-size-l);
   font-weight: 700;
   color: #fff;
   margin-top: 0;
+  margin-bottom: 12px;
 }
 
-footer .footer p {
+footer .footer .columns > div {
+  background-color: transparent;
+  border-radius: 0;
+}
+
+footer .footer .columns > div > div {
+  padding: 0 0 24px;
+}
+
+footer .footer .columns p {
   margin: 0;
   color: #fff;
+  font-size: var(--body-font-size-s);
 }
 
-footer .footer a:any-link {
+footer .footer .columns a:any-link {
   color: #fff;
-  font-weight: 700;
+  font-weight: 400;
   font-size: var(--body-font-size-s);
   text-decoration: none;
 }
 
-footer .footer a:hover {
+footer .footer .columns a:hover {
   text-decoration: underline;
 }
 
-footer .footer ul {
+footer .footer .columns ul {
   list-style: none;
   padding: 0;
-  margin: 0;
+  margin: 0 0 16px;
 }
 
-footer .footer ul li {
+footer .footer .columns ul li {
   padding: 4px 0;
 }
 
+/* Copyright / bottom bar section */
+footer .footer > div:last-child {
+  background-color: var(--light-color);
+  padding: 16px 24px;
+  margin: 0;
+  max-width: unset;
+}
+
+footer .footer > div:last-child p {
+  color: var(--text-color);
+  font-size: var(--body-font-size-xs);
+  text-align: center;
+  margin: 4px 0;
+}
+
+footer .footer > div:last-child a:any-link {
+  color: var(--text-color);
+  font-size: var(--body-font-size-xs);
+  font-weight: 400;
+}
+
 @media (width >= 900px) {
-  footer .footer > div {
+  footer .footer .columns-wrapper {
     padding: 40px 32px 24px;
-    display: grid;
-    grid-template-columns: repeat(4, 1fr);
+  }
+
+  footer .footer .columns > div {
+    flex-direction: row;
     gap: 32px;
+  }
+
+  footer .footer .columns > div > div {
+    flex: 1;
+    padding: 0;
   }
 }

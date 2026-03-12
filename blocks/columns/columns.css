@@ -1,14 +1,20 @@
+/* Columns block - feature tile layout */
 .columns > div {
   display: flex;
   flex-direction: column;
+  background-color: var(--light-color);
+  border-radius: 10px;
+  overflow: hidden;
 }
 
 .columns img {
   width: 100%;
+  display: block;
 }
 
 .columns > div > div {
   order: 1;
+  padding: 24px;
 }
 
 .columns > div > .columns-img-col {
@@ -22,13 +28,15 @@
 .columns h3 {
   font-family: var(--heading-font-family);
   font-weight: 700;
-  color: var(--tsc-red);
-  margin-top: 8px;
+  color: var(--text-color);
+  margin-top: 0;
+  font-size: var(--heading-font-size-l);
 }
 
 .columns p {
   font-size: var(--body-font-size-m);
   line-height: 1.5;
+  color: #555;
 }
 
 .columns a.button:any-link {
@@ -38,21 +46,44 @@
   padding: 12px 24px;
   font-weight: 700;
   font-size: var(--body-font-size-s);
+  border: 2px solid var(--tsc-red);
 }
 
 .columns a.button:hover {
   background-color: var(--link-hover-color);
+  border-color: var(--link-hover-color);
+}
+
+/* Emphasis button = secondary style */
+.columns em a.button:any-link,
+.columns a.button.secondary:any-link {
+  background-color: transparent;
+  color: var(--tsc-red);
+  border-color: var(--tsc-red);
+}
+
+.columns em a.button:hover,
+.columns a.button.secondary:hover {
+  background-color: var(--light-color);
+  color: var(--link-hover-color);
+  border-color: var(--link-hover-color);
 }
 
 @media (width >= 900px) {
   .columns > div {
     align-items: center;
-    flex-direction: unset;
-    gap: 32px;
+    flex-direction: row;
+    gap: 0;
+    border-radius: 10px;
   }
 
   .columns > div > div {
     flex: 1;
     order: unset;
+    padding: 32px 40px;
+  }
+
+  .columns > div > .columns-img-col {
+    flex: 1;
   }
 }

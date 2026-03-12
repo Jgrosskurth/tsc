@@ -350,3 +350,47 @@ main .section.green {
 main .section.green h3 {
   color: var(--tsc-olive-text);
 }
+
+/* disclaimer section */
+main .section.disclaimer {
+  background-color: var(--light-color);
+  margin: 0;
+  padding: 24px 0;
+}
+
+main .section.disclaimer p {
+  font-size: var(--body-font-size-xs);
+  color: #555;
+  line-height: 1.4;
+}
+
+/* hide metadata block from rendering */
+main .section > div.metadata-wrapper {
+  display: none;
+}
+
+/* full-width banner images */
+main > .section > div > p > a > picture,
+main > .section > div > p > a > picture > img {
+  width: 100%;
+  display: block;
+}
+
+main > .section > div > p:has(> a > picture) {
+  margin: 0;
+}
+
+/* section spacing refinements */
+main > .section {
+  margin: 0;
+}
+
+main > .section > div {
+  padding: 24px;
+}
+
+@media (width >= 900px) {
+  main > .section > div {
+    padding: 24px 32px;
+  }
+}
