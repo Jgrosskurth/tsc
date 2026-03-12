@@ -357,6 +357,13 @@
 </html>`;
 
   // ========================
+  // CLEANUP: Delete stale duplicate index files
+  // ========================
+  console.log('=== Cleaning up duplicate index files ===');
+  await del('index-da.html');
+  await del('index-da.plain.html');
+
+  // ========================
   // EXECUTE UPLOADS
   // ========================
   console.log('=== Starting DA Content Upload ===');
