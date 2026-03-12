@@ -60,6 +60,7 @@ footer .footer .columns ul li {
 }
 
 /* Copyright / bottom bar section */
+/* stylelint-disable-next-line no-descending-specificity */
 footer .footer > div:last-child {
   background-color: var(--light-color);
   padding: 16px 24px;
