@@ -228,7 +228,13 @@
 
 /* ========================================
    Services variant - overlay cards
+   on olive-green section background
    ======================================== */
+.cards.services-wrapper {
+  padding-top: 24px;
+  padding-bottom: 24px;
+}
+
 .cards.services > ul {
   grid-template-columns: 1fr;
   gap: 16px;
@@ -257,7 +263,7 @@
 .cards.services .cards-card-body {
   position: relative;
   z-index: 1;
-  background-color: rgb(160 40 23 / 90%);
+  background-color: rgb(160 40 23 / 85%);
   color: #fff;
   padding: 18px 20px 16px;
   width: 100%;

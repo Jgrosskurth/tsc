@@ -34,7 +34,7 @@
   justify-content: center;
   position: relative;
   width: 100%;
-  min-height: min(50vw, calc(100dvh - var(--nav-height)));
+  min-height: min(50vw, 520px);
 }
 
 .carousel .carousel-slide .carousel-slide-image picture {

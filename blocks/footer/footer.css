@@ -11,16 +11,18 @@ footer .footer {
 
 /* Footer link columns section */
 footer .footer .columns-wrapper {
-  padding: 40px 24px 24px;
+  padding: 48px 24px 24px;
 }
 
 footer .footer .columns h3 {
   font-family: var(--heading-font-family);
-  font-size: var(--heading-font-size-l);
+  font-size: var(--heading-font-size-s);
   font-weight: 700;
   color: #fff;
   margin-top: 0;
   margin-bottom: 12px;
+  border-bottom: 1px solid rgb(255 255 255 / 20%);
+  padding-bottom: 8px;
 }
 
 footer .footer .columns > div {
@@ -63,7 +65,7 @@ footer .footer .columns ul li {
 /* stylelint-disable-next-line no-descending-specificity */
 footer .footer > div:last-child {
   background-color: var(--light-color);
-  padding: 16px 24px;
+  padding: 20px 24px;
   margin: 0;
   max-width: unset;
 }
@@ -73,6 +75,7 @@ footer .footer > div:last-child p {
   font-size: var(--body-font-size-xs);
   text-align: center;
   margin: 4px 0;
+  line-height: 1.6;
 }
 
 footer .footer > div:last-child a:any-link {
@@ -81,9 +84,13 @@ footer .footer > div:last-child a:any-link {
   font-weight: 400;
 }
 
+footer .footer > div:last-child a:hover {
+  text-decoration: underline;
+}
+
 @media (width >= 900px) {
   footer .footer .columns-wrapper {
-    padding: 40px 32px 24px;
+    padding: 48px 32px 24px;
   }
 
   footer .footer .columns > div {

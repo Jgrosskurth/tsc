@@ -114,6 +114,19 @@ function decorateButtons(main) {
 }
 
 /**
+ * Cleans up escaped HTML tags in disclaimer sections.
+ * @param {Element} main The main element
+ */
+function cleanupDisclaimers(main) {
+  main.querySelectorAll('.section.disclaimer p').forEach((p) => {
+    const text = p.textContent;
+    if (text.includes('<small>') || text.includes('</small>')) {
+      p.textContent = text.replace(/<\/?small>/g, '');
+    }
+  });
+}
+
+/**
  * Decorates the main element.
  * @param {Element} main The main element
  */
@@ -124,6 +137,7 @@ export function decorateMain(main) {
   decorateSections(main);
   decorateBlocks(main);
   decorateButtons(main);
+  cleanupDisclaimers(main);
 }
 
 /**

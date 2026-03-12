@@ -23,6 +23,8 @@
   --tsc-olive-green: #c4d2a8;
   --tsc-olive-text: #576446;
   --tsc-cream: #f9f6f2;
+  --tsc-bright-green: #7d9c29;
+  --tsc-light-gray: #faf6f4;
 
   /* fonts */
   --body-font-family: roboto, roboto-fallback, sans-serif;
@@ -42,7 +44,7 @@
   --heading-font-size-xs: 16px;
 
   /* nav height */
-  --nav-height: 64px;
+  --nav-height: 120px;
 }
 
 /* fallback fonts */
@@ -304,12 +306,12 @@ main > .section {
 main > .section > div {
   max-width: 1200px;
   margin: auto;
-  padding: 24px;
+  padding: 16px 24px;
 }
 
 @media (width >= 900px) {
   main > .section > div {
-    padding: 24px 32px;
+    padding: 16px 32px;
   }
 }
 
@@ -347,6 +349,21 @@ main .section.green h3 {
   color: var(--tsc-olive-text);
 }
 
+main .section.bright-green {
+  background-color: var(--tsc-bright-green);
+  margin: 0;
+  padding: 0;
+}
+
+main .section.bright-green h3,
+main .section.bright-green p {
+  color: #fff;
+}
+
+main .section.bright-green a:any-link {
+  color: #fff;
+}
+
 /* disclaimer section */
 main .section.disclaimer {
   background-color: var(--light-color);
@@ -358,6 +375,19 @@ main .section.disclaimer p {
   font-size: var(--body-font-size-xs);
   color: #555;
   line-height: 1.4;
+}
+
+/* Section headings (Shop Popular Categories, etc.) */
+/* stylelint-disable-next-line no-descending-specificity */
+main > .section > div > h2 {
+  font-size: var(--heading-font-size-xl);
+  margin-bottom: 16px;
+}
+
+/* Olive-green background for services (overlay) cards */
+main > .section:has(.cards.services) {
+  background-color: var(--tsc-olive-green);
+  padding: 24px 0;
 }
 
 /* hide metadata block from rendering */
@@ -375,4 +405,10 @@ main > .section > div > p > a > picture,
 main > .section > div > p > a > picture > img {
   width: 100%;
   display: block;
+}
+
+/* Banner-only sections: remove padding, full bleed */
+main > .section > div.default-content-wrapper:has(> p > a > picture):not(:has(h1, h2, h3, h4, ul, ol)) {
+  max-width: unset;
+  padding: 0;
 }

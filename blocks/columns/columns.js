@@ -15,4 +15,13 @@ export default function decorate(block) {
       }
     });
   });
+
+  // alternate feature tile columns for visual variety
+  if (block.classList.contains('columns-2-cols') && block.querySelector('.columns-img-col')) {
+    const featureCols = document.querySelectorAll('main .columns.columns-2-cols');
+    const idx = [...featureCols].indexOf(block);
+    if (idx >= 0 && idx % 2 === 0) {
+      block.classList.add('columns-text-first');
+    }
+  }
 }

@@ -130,6 +130,11 @@ export default async function decorate(block) {
     if (section) section.classList.add(`nav-${c}`);
   });
 
+  // Add announcement bar at the top (outside nav, inside wrapper)
+  const announcement = document.createElement('div');
+  announcement.className = 'nav-announcement';
+  announcement.innerHTML = 'Get ready for the season ahead <a href="/tsc/cms/digital-flyer">Shop Now</a>';
+
   const navBrand = nav.querySelector('.nav-brand');
   const brandLink = navBrand.querySelector('.button');
   if (brandLink) {
@@ -158,7 +163,7 @@ export default async function decorate(block) {
       <span class="nav-hamburger-icon"></span>
     </button>`;
   hamburger.addEventListener('click', () => toggleMenu(nav, navSections));
-  nav.prepend(hamburger);
+  navBrand.prepend(hamburger);
   nav.setAttribute('aria-expanded', 'false');
   // prevent mobile nav behavior on window resize
   toggleMenu(nav, navSections, isDesktop.matches);
@@ -166,6 +171,7 @@ export default async function decorate(block) {
 
   const navWrapper = document.createElement('div');
   navWrapper.className = 'nav-wrapper';
+  navWrapper.append(announcement);
   navWrapper.append(nav);
   block.append(navWrapper);
 }

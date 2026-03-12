@@ -5,3 +5,7 @@ LICENSE
 package.json
 package-lock.json
 test/*
+content-server.js
+tools/*
+migration-work/*
+content/*

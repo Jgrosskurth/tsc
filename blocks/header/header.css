@@ -1,53 +1,29 @@
-/* header and nav layout */
+/* ========================================
+   TSC Header - Three-tier layout
+   1. Announcement bar (red, full width)
+   2. Main header (white: logo + nav tools)
+   3. Category nav (white, border-bottom)
+   ======================================== */
+
+/* wrapper */
 header .nav-wrapper {
   background-color: var(--background-color);
   width: 100%;
-  z-index: 2;
+  z-index: 10;
   position: fixed;
-  box-shadow: 0 2px 4px rgb(0 0 0 / 10%);
+  top: 0;
+  box-shadow: 0 1px 3px rgb(0 0 0 / 10%);
 }
 
 header nav {
   box-sizing: border-box;
-  display: grid;
-  grid-template:
-    'hamburger brand tools' var(--nav-height)
-    'sections sections sections' 1fr / auto 1fr auto;
+  display: flex;
+  flex-wrap: wrap;
   align-items: center;
-  gap: 0 24px;
   margin: auto;
-  max-width: 1248px;
-  height: var(--nav-height);
-  padding: 0 24px;
+  max-width: 1264px;
+  padding: 0 16px;
   font-family: var(--body-font-family);
-}
-
-header nav[aria-expanded='true'] {
-  grid-template:
-    'hamburger brand' var(--nav-height)
-    'sections sections' 1fr
-    'tools tools' var(--nav-height) / auto 1fr;
-  overflow-y: auto;
-  min-height: 100dvh;
-}
-
-@media (width >= 900px) {
-  header .nav-wrapper {
-    position: relative;
-  }
-
-  header nav {
-    display: flex;
-    justify-content: space-between;
-    gap: 0 32px;
-    max-width: 1264px;
-    padding: 0 32px;
-  }
-
-  header nav[aria-expanded='true'] {
-    min-height: 0;
-    overflow: visible;
-  }
 }
 
 header nav p {
@@ -56,13 +32,98 @@ header nav p {
 }
 
 header nav a:any-link {
-  color: var(--tsc-red);
-  font-weight: 700;
+  color: var(--text-color);
+  text-decoration: none;
 }
 
-/* hamburger */
+/* ---- Tier 1: Announcement bar (red, full viewport width) ---- */
+header .nav-announcement {
+  background-color: var(--tsc-red);
+  color: #fff;
+  text-align: center;
+  padding: 6px 16px;
+  font-size: var(--body-font-size-xs);
+  font-weight: 500;
+}
+
+header .nav-announcement a:any-link {
+  color: #fff;
+  font-weight: 700;
+  text-decoration: underline;
+  margin-left: 8px;
+}
+
+/* ---- Tier 2: Main header row ---- */
+header .nav-brand {
+  display: flex;
+  align-items: center;
+  padding: 10px 0;
+  gap: 16px;
+  flex: 1;
+  min-width: 0;
+}
+
+header nav .nav-brand img {
+  width: 140px;
+  height: auto;
+}
+
+header nav .nav-brand a:any-link {
+  font-family: var(--heading-font-family);
+  font-size: 20px;
+  font-weight: 700;
+  color: var(--tsc-red);
+  text-decoration: none;
+  display: flex;
+  align-items: center;
+}
+
+/* ---- Tier 3: Category nav (sections) ---- */
+header nav .nav-sections {
+  display: none;
+  visibility: hidden;
+  border-top: 1px solid #e6e6e6;
+  padding: 0;
+  width: 100%;
+  flex-basis: 100%;
+  order: 4;
+}
+
+header nav[aria-expanded='true'] .nav-sections {
+  display: block;
+  visibility: visible;
+}
+
+header nav .nav-sections ul {
+  list-style: none;
+  padding-left: 0;
+  font-size: var(--body-font-size-s);
+  margin: 0;
+}
+
+header nav .nav-sections ul > li {
+  font-weight: 600;
+  color: var(--text-color);
+  padding: 10px 0;
+  font-size: var(--body-font-size-s);
+  cursor: pointer;
+}
+
+header nav .nav-sections ul > li:hover {
+  color: var(--tsc-red);
+}
+
+header nav .nav-sections ul > li > ul {
+  margin-top: 0;
+}
+
+/* stylelint-disable-next-line no-descending-specificity */
+header nav .nav-sections ul > li > ul > li {
+  font-weight: 400;
+}
+
+/* ---- Hamburger ---- */
 header nav .nav-hamburger {
-  grid-area: hamburger;
   height: 22px;
   display: flex;
   align-items: center;
@@ -75,7 +136,7 @@ header nav .nav-hamburger button {
   border-radius: 0;
   padding: 0;
   background-color: var(--background-color);
-  color: var(--tsc-red);
+  color: var(--text-color);
   overflow: initial;
   text-overflow: initial;
   white-space: initial;
@@ -134,69 +195,71 @@ header nav[aria-expanded='true'] .nav-hamburger-icon::after {
   transform: rotate(-45deg);
 }
 
+/* Mobile expanded state */
+header nav[aria-expanded='true'] {
+  overflow-y: auto;
+  min-height: 100dvh;
+}
+
+/* ---- Tools (Find a Store, Cart) ---- */
+header nav .nav-tools {
+  display: flex;
+  align-items: center;
+  padding: 10px 0;
+}
+
+/* stylelint-disable-next-line no-descending-specificity */
+header nav .nav-tools ul {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+  display: flex;
+  gap: 8px;
+  align-items: center;
+}
+
+header nav .nav-tools a:any-link {
+  font-size: var(--body-font-size-xs);
+  font-weight: 600;
+  color: var(--text-color);
+  padding: 6px 12px;
+  border-radius: 100px;
+  border: 1px solid #e6e6e6;
+  text-decoration: none;
+  white-space: nowrap;
+}
+
+header nav .nav-tools a:hover {
+  background-color: var(--light-color);
+  text-decoration: none;
+}
+
+/* ========================================
+   Desktop (900px+)
+   ======================================== */
 @media (width >= 900px) {
+  header .nav-wrapper {
+    position: relative;
+  }
+
+  header nav {
+    padding: 0 32px;
+  }
+
   header nav .nav-hamburger {
     display: none;
     visibility: hidden;
   }
-}
 
-/* brand */
-header .nav-brand {
-  grid-area: brand;
-  flex-basis: 128px;
-  font-size: var(--heading-font-size-s);
-  font-weight: 700;
-  line-height: 1;
-}
+  header .nav-brand {
+    padding: 12px 0;
+  }
 
-header nav .nav-brand img {
-  width: 128px;
-  height: auto;
-}
+  header nav .nav-brand img {
+    width: 160px;
+  }
 
-header nav .nav-brand a:any-link {
-  font-family: var(--heading-font-family);
-  font-size: 20px;
-  font-weight: 700;
-  color: var(--tsc-red);
-  text-decoration: none;
-}
-
-/* sections */
-header nav .nav-sections {
-  grid-area: sections;
-  flex: 1 1 auto;
-  display: none;
-  visibility: hidden;
-}
-
-header nav[aria-expanded='true'] .nav-sections {
-  display: block;
-  visibility: visible;
-  align-self: start;
-}
-
-header nav .nav-sections ul {
-  list-style: none;
-  padding-left: 0;
-  font-size: var(--body-font-size-s);
-}
-
-header nav .nav-sections ul > li {
-  font-weight: 700;
-  color: var(--text-color);
-}
-
-header nav .nav-sections ul > li > ul {
-  margin-top: 0;
-}
-
-header nav .nav-sections ul > li > ul > li {
-  font-weight: 400;
-}
-
-@media (width >= 900px) {
+  /* Desktop: category nav visible */
   header nav .nav-sections {
     display: block;
     visibility: visible;
@@ -204,16 +267,44 @@ header nav .nav-sections ul > li > ul > li {
     overflow-x: auto;
     -ms-overflow-style: none;
     scrollbar-width: none;
+    padding: 0;
   }
 
   header nav .nav-sections::-webkit-scrollbar {
     display: none;
   }
 
+  header nav .nav-sections ul {
+    display: flex;
+    gap: 0;
+    margin: 0;
+    padding: 0;
+  }
+
+  header nav .nav-sections ul > li {
+    flex: 0 1 auto;
+    padding: 10px 14px;
+    font-size: var(--body-font-size-s);
+    font-weight: 600;
+    border-bottom: 3px solid transparent;
+    transition: border-color 0.2s;
+  }
+
+  header nav .nav-sections ul > li:hover {
+    border-bottom-color: var(--tsc-red);
+    color: var(--tsc-red);
+  }
+
+  header nav[aria-expanded='true'] {
+    min-height: 0;
+    overflow: visible;
+  }
+
   header nav[aria-expanded='true'] .nav-sections {
     align-self: unset;
   }
 
+  /* Dropdown */
   header nav .nav-sections .nav-drop {
     position: relative;
     padding-right: 16px;
@@ -240,14 +331,7 @@ header nav .nav-sections ul > li > ul > li {
     transform: rotate(315deg);
   }
 
-  header nav .nav-sections ul {
-    display: flex;
-    gap: 24px;
-    margin: 0;
-  }
-
   header nav .nav-sections .default-content-wrapper > ul > li {
-    flex: 0 1 auto;
     position: relative;
   }
 
@@ -282,34 +366,9 @@ header nav .nav-sections ul > li > ul > li {
   header nav .nav-sections .default-content-wrapper > ul > li > ul > li {
     padding: 8px 0;
   }
-}
 
-/* tools */
-header nav .nav-tools {
-  grid-area: tools;
-}
-
-/* stylelint-disable-next-line no-descending-specificity */
-header nav .nav-tools ul {
-  list-style: none;
-  padding: 0;
-  margin: 0;
-  display: flex;
-  gap: 12px;
-  align-items: center;
-}
-
-header nav .nav-tools a:any-link {
-  font-size: var(--body-font-size-s);
-  font-weight: 500;
-  color: var(--text-color);
-  padding: 8px 12px;
-  border-radius: 100px;
-  border: 1px solid #e6e6e6;
-  text-decoration: none;
-}
-
-header nav .nav-tools a:hover {
-  background-color: var(--light-color);
-  text-decoration: none;
+  header nav .nav-tools a:any-link {
+    font-size: var(--body-font-size-s);
+    padding: 8px 16px;
+  }
 }
