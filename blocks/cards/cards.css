@@ -412,6 +412,7 @@
   .cards.store-services .cards-card-image {
     flex: 0 0 auto;
     width: 100%;
+    padding: 24px 16px;
   }
 
   .cards.store-services > ul > li img {
@@ -419,10 +420,6 @@
     height: 80px;
     aspect-ratio: 1;
     object-fit: contain;
-  }
-
-  .cards.store-services .cards-card-image {
-    padding: 24px 16px;
   }
 
   .cards.store-services .cards-card-body {
