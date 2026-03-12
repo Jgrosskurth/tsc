@@ -8,8 +8,8 @@
  * The AEM page pipeline converts tables with block-name headers into
  * block divs. Regular <div class="blockname"> is stripped by the pipeline.
  *
- * Nav and footer use div format because they're loaded via .plain.html
- * which bypasses the page pipeline.
+ * Nav and footer use full HTML wrapper because DA stores full documents.
+ * When fetched via .plain.html, only the <main> inner content is returned.
  *
  * Usage: Copy and paste this entire script into the browser console.
  */
@@ -50,13 +50,14 @@
   async function preview(path) {
     const resp = await fetch(`${AEM_ADMIN}/${path}`, {
       method: 'POST',
+      headers: { Authorization: `Bearer ${token}` },
     });
     console.log(`Preview ${path}: ${resp.status} ${resp.statusText}`);
     return resp.ok;
   }
 
   // ========================
-  // NAV CONTENT (div format OK - loaded via .plain.html)
+  // NAV CONTENT (full HTML wrapper for DA storage)
   // ========================
   const navHtml = `<html>
 <body>
@@ -92,7 +93,7 @@
 </html>`;
 
   // ========================
-  // FOOTER CONTENT (div format OK - loaded via .plain.html)
+  // FOOTER CONTENT (full HTML wrapper for DA storage)
   // ========================
   const footerHtml = `<html>
 <body>
@@ -138,7 +139,7 @@
             </ul>
           </div>
           <div>
-            <h3>Neighbor's Club</h3>
+            <h3>Neighbor\u2019s Club</h3>
             <ul>
               <li><a href="/tsc/cms/neighbors-club">About</a></li>
               <li><a href="/tsc/cms/neighbors-club-faq">Frequently Asked Questions</a></li>
@@ -165,6 +166,7 @@
   // ========================
   // INDEX (HOMEPAGE) CONTENT
   // Uses TABLE format for blocks (required by AEM page pipeline)
+  // Local SVG paths for icons (served from git repo via Code Sync)
   // Sections separated by <hr>
   // ========================
   const indexHtml = `<html>
@@ -192,22 +194,22 @@
     <h2>Shop Popular Categories</h2>
     <table>
       <tr><th colspan="2">Cards (categories)</th></tr>
-      <tr><td><picture><img src="https://media.tractorsupply.com/is/image/TractorSupplyCompany/TSC_Icons_Sale?scl=1" alt="Sale" loading="lazy"></picture></td><td><p><a href="/tsc/sale">Sale</a></p></td></tr>
-      <tr><td><picture><img src="https://media.tractorsupply.com/is/image/TractorSupplyCompany/TSC_Icons_ChickDays?scl=1" alt="Chick Days" loading="lazy"></picture></td><td><p><a href="/tsc/cms/chick-days">Chick Days</a></p></td></tr>
-      <tr><td><picture><img src="https://media.tractorsupply.com/is/image/TractorSupplyCompany/TSC_Icons_DemoDays?scl=1" alt="Demo Days" loading="lazy"></picture></td><td><p><a href="/tsc/cms/demo-days">Demo Days</a></p></td></tr>
-      <tr><td><picture><img src="https://media.tractorsupply.com/is/image/TractorSupplyCompany/TSC_Icons_Tools?scl=1" alt="Tools" loading="lazy"></picture></td><td><p><a href="/tsc/category/tools">Tools</a></p></td></tr>
-      <tr><td><picture><img src="https://media.tractorsupply.com/is/image/TractorSupplyCompany/TSC_Icons_Pet?scl=1" alt="Pet" loading="lazy"></picture></td><td><p><a href="/tsc/category/pet">Pet</a></p></td></tr>
-      <tr><td><picture><img src="https://media.tractorsupply.com/is/image/TractorSupplyCompany/TSC_Icons_TaxRefund?scl=1" alt="Tax Refund" loading="lazy"></picture></td><td><p><a href="/tsc/cms/yard">Tax Refund</a></p></td></tr>
-      <tr><td><picture><img src="https://media.tractorsupply.com/is/image/TractorSupplyCompany/TSC_Icons_Ammunition?scl=1" alt="Ammunition" loading="lazy"></picture></td><td><p><a href="/tsc/catalog/ammunition">Ammunition</a></p></td></tr>
-      <tr><td><picture><img src="https://media.tractorsupply.com/is/image/TractorSupplyCompany/TSC_Icons_DirectSales?scl=1" alt="Direct Sales" loading="lazy"></picture></td><td><p><a href="/tsc/cms/direct-sales">Direct Sales</a></p></td></tr>
-      <tr><td><picture><img src="https://media.tractorsupply.com/is/image/TractorSupplyCompany/TSC_Icons_OutdoorPower?scl=1" alt="Outdoor Power Equipment" loading="lazy"></picture></td><td><p><a href="/tsc/category/outdoor-power-equipment">Outdoor Power Equipment</a></p></td></tr>
-      <tr><td><picture><img src="https://media.tractorsupply.com/is/image/TractorSupplyCompany/TSC_Icons_Fencing?scl=1" alt="Fencing and Gates" loading="lazy"></picture></td><td><p><a href="/tsc/category/fencing-gates">Fencing &amp; Gates</a></p></td></tr>
-      <tr><td><picture><img src="https://media.tractorsupply.com/is/image/TractorSupplyCompany/TSC_Icons_Pharmacy?scl=1" alt="Pet and Animal Pharmacy" loading="lazy"></picture></td><td><p><a href="/tsc/category/pet-animal-pharmacy">Pet &amp; Animal Pharmacy</a></p></td></tr>
-      <tr><td><picture><img src="https://media.tractorsupply.com/is/image/TractorSupplyCompany/TSC_Icons_Clothing?scl=1" alt="Clothing" loading="lazy"></picture></td><td><p><a href="/tsc/category/clothing">Clothing</a></p></td></tr>
-      <tr><td><picture><img src="https://media.tractorsupply.com/is/image/TractorSupplyCompany/TSC_Icons_GiftCard?scl=1" alt="Gift Card" loading="lazy"></picture></td><td><p><a href="/tsc/cms/gift-card">Gift Card</a></p></td></tr>
-      <tr><td><picture><img src="https://media.tractorsupply.com/is/image/TractorSupplyCompany/TSC_Icons_Boots?scl=1" alt="Boots and Shoes" loading="lazy"></picture></td><td><p><a href="/tsc/category/boots-shoes">Boots &amp; Shoes</a></p></td></tr>
-      <tr><td><picture><img src="https://media.tractorsupply.com/is/image/TractorSupplyCompany/TSC_Icons_Trailers?scl=1" alt="Trailers and Towing" loading="lazy"></picture></td><td><p><a href="/tsc/category/trailers-towing">Trailers &amp; Towing</a></p></td></tr>
-      <tr><td><picture><img src="https://media.tractorsupply.com/is/image/TractorSupplyCompany/TSC_Icons_Horse?scl=1" alt="Horse" loading="lazy"></picture></td><td><p><a href="/tsc/category/horse">Horse</a></p></td></tr>
+      <tr><td><picture><img src="/icons/cat-sale.svg" alt="Sale" loading="lazy"></picture></td><td><p><a href="/tsc/sale">Sale</a></p></td></tr>
+      <tr><td><picture><img src="/icons/cat-chick-days.svg" alt="Chick Days" loading="lazy"></picture></td><td><p><a href="/tsc/cms/chick-days">Chick Days</a></p></td></tr>
+      <tr><td><picture><img src="/icons/cat-demo-days.svg" alt="Demo Days" loading="lazy"></picture></td><td><p><a href="/tsc/cms/demo-days">Demo Days</a></p></td></tr>
+      <tr><td><picture><img src="/icons/cat-tools.svg" alt="Tools" loading="lazy"></picture></td><td><p><a href="/tsc/category/tools">Tools</a></p></td></tr>
+      <tr><td><picture><img src="/icons/cat-pet.svg" alt="Pet" loading="lazy"></picture></td><td><p><a href="/tsc/category/pet">Pet</a></p></td></tr>
+      <tr><td><picture><img src="/icons/cat-tax-refund.svg" alt="Tax Refund" loading="lazy"></picture></td><td><p><a href="/tsc/cms/yard">Tax Refund</a></p></td></tr>
+      <tr><td><picture><img src="/icons/cat-ammunition.svg" alt="Ammunition" loading="lazy"></picture></td><td><p><a href="/tsc/catalog/ammunition">Ammunition</a></p></td></tr>
+      <tr><td><picture><img src="/icons/cat-direct-sales.svg" alt="Direct Sales" loading="lazy"></picture></td><td><p><a href="/tsc/cms/direct-sales">Direct Sales</a></p></td></tr>
+      <tr><td><picture><img src="/icons/cat-outdoor-power-equipment.svg" alt="Outdoor Power Equipment" loading="lazy"></picture></td><td><p><a href="/tsc/category/outdoor-power-equipment">Outdoor Power Equipment</a></p></td></tr>
+      <tr><td><picture><img src="/icons/cat-fencing-and-gates.svg" alt="Fencing and Gates" loading="lazy"></picture></td><td><p><a href="/tsc/category/fencing-gates">Fencing &amp; Gates</a></p></td></tr>
+      <tr><td><picture><img src="/icons/cat-pet-and-animal-pharmacy.svg" alt="Pet and Animal Pharmacy" loading="lazy"></picture></td><td><p><a href="/tsc/category/pet-animal-pharmacy">Pet &amp; Animal Pharmacy</a></p></td></tr>
+      <tr><td><picture><img src="/icons/cat-clothing.svg" alt="Clothing" loading="lazy"></picture></td><td><p><a href="/tsc/category/clothing">Clothing</a></p></td></tr>
+      <tr><td><picture><img src="/icons/cat-gift-card.svg" alt="Gift Card" loading="lazy"></picture></td><td><p><a href="/tsc/cms/gift-card">Gift Card</a></p></td></tr>
+      <tr><td><picture><img src="/icons/cat-boots-and-shoes.svg" alt="Boots and Shoes" loading="lazy"></picture></td><td><p><a href="/tsc/category/boots-shoes">Boots &amp; Shoes</a></p></td></tr>
+      <tr><td><picture><img src="/icons/cat-trailers-and-towing.svg" alt="Trailers and Towing" loading="lazy"></picture></td><td><p><a href="/tsc/category/trailers-towing">Trailers &amp; Towing</a></p></td></tr>
+      <tr><td><picture><img src="/icons/cat-horse.svg" alt="Horse" loading="lazy"></picture></td><td><p><a href="/tsc/category/horse">Horse</a></p></td></tr>
     </table>
     <hr>
     <!-- Section 3: Demo Days Banner -->
@@ -225,7 +227,7 @@
     <!-- Section 5: ALPO Banner -->
     <p><a href="/tsc/brand/ALPO"><picture><img src="https://media.tractorsupply.com/is/image/TractorSupplyCompany/FW11-030926-TSC-HP-Banner-ALPO-D-V1?scl=1&amp;fmt=png-alpha" alt="Earn 3 dollars in rewards on Purina ALPO dog food" loading="lazy"></picture></a></p>
     <hr>
-    <!-- Section 6: Garden Feature Tile (bright-green) -->
+    <!-- Section 6: Garden Feature Tile -->
     <table>
       <tr><th colspan="2">Columns</th></tr>
       <tr>
@@ -233,15 +235,11 @@
         <td><h3>Dig into spring</h3><p>Time to grow fresh veggies and flowers</p><p><strong><a href="/tsc/category/lawn-garden">Shop Now</a></strong></p></td>
       </tr>
     </table>
-    <table>
-      <tr><th colspan="2">Section Metadata</th></tr>
-      <tr><td>style</td><td>bright-green</td></tr>
-    </table>
     <hr>
     <!-- Section 7: Patio Furniture Banner -->
     <p><a href="/tsc/sale/patio-furniture-decor"><picture><img src="https://media.tractorsupply.com/is/image/TractorSupplyCompany/FW11-030926-TSC-HP-Banner-PatioFurniture-V1-D?scl=1&amp;fmt=png-alpha" alt="Save up to 40 percent off patio furniture and decor" loading="lazy"></picture></a></p>
     <hr>
-    <!-- Section 8: Poultry Feature Tile (bright-green) -->
+    <!-- Section 8: Poultry Feature Tile -->
     <table>
       <tr><th colspan="2">Columns</th></tr>
       <tr>
@@ -249,25 +247,17 @@
         <td><h3>Chick Days are here</h3><p>Everything you need to grow your flock or start a new one</p><p><strong><a href="/tsc/cms/chick-days">Shop Now</a></strong></p></td>
       </tr>
     </table>
-    <table>
-      <tr><th colspan="2">Section Metadata</th></tr>
-      <tr><td>style</td><td>bright-green</td></tr>
-    </table>
     <hr>
     <!-- Section 9: Credit Card Banner -->
     <p><a href="/tsc/cms/credit"><picture><img src="https://media.tractorsupply.com/is/image/TractorSupplyCompany/FW11-030926-TSC-HP-Banner-Financing-D-V1?scl=1&amp;fmt=png-alpha" alt="Open a TSC Credit Card and earn 50 dollars in rewards" loading="lazy"></picture></a></p>
     <hr>
-    <!-- Section 10: Trailers Feature Tile (green) -->
+    <!-- Section 10: Trailers Feature Tile -->
     <table>
       <tr><th colspan="2">Columns</th></tr>
       <tr>
         <td><picture><img src="https://media.tractorsupply.com/is/image/TractorSupplyCompany/FW11-030926-TSC-HP-BigBox-HobbyFarmer-V1?scl=1" alt="Exclusive trailers and accessories" loading="lazy"></picture></td>
         <td><h3>Exclusive trailers &amp; accessories</h3><p>Just what you need for the job</p><p><strong><a href="/tsc/category/trailers-towing">Shop Now</a></strong></p></td>
       </tr>
-    </table>
-    <table>
-      <tr><th colspan="2">Section Metadata</th></tr>
-      <tr><td>style</td><td>green</td></tr>
     </table>
     <hr>
     <!-- Section 11: Services Overlay Cards -->
@@ -294,13 +284,13 @@
     <h2>Shop Popular Brands</h2>
     <table>
       <tr><th colspan="2">Cards (brands)</th></tr>
-      <tr><td><picture><img src="https://media.tractorsupply.com/is/image/TractorSupplyCompany/carhartt-logo?scl=1" alt="Carhartt" loading="lazy"></picture></td><td><p><a href="/tsc/brand/Carhartt">Carhartt</a></p></td></tr>
-      <tr><td><picture><img src="https://media.tractorsupply.com/is/image/TractorSupplyCompany/cub-cadet-logo?scl=1" alt="Cub Cadet" loading="lazy"></picture></td><td><p><a href="/tsc/brand/Cub+Cadet">Cub Cadet</a></p></td></tr>
-      <tr><td><picture><img src="https://media.tractorsupply.com/is/image/TractorSupplyCompany/purina-logo?scl=1" alt="Purina" loading="lazy"></picture></td><td><p><a href="/tsc/brand/Purina">Purina</a></p></td></tr>
-      <tr><td><picture><img src="https://media.tractorsupply.com/is/image/TractorSupplyCompany/yeti-logo?scl=1" alt="YETI" loading="lazy"></picture></td><td><p><a href="/tsc/brand/YETI">YETI</a></p></td></tr>
-      <tr><td><picture><img src="https://media.tractorsupply.com/is/image/TractorSupplyCompany/dewalt-logo?scl=1" alt="DeWALT" loading="lazy"></picture></td><td><p><a href="/tsc/brand/DeWALT">DeWALT</a></p></td></tr>
-      <tr><td><picture><img src="https://media.tractorsupply.com/is/image/TractorSupplyCompany/blackstone-logo?scl=1" alt="Blackstone" loading="lazy"></picture></td><td><p><a href="/tsc/brand/Blackstone">Blackstone</a></p></td></tr>
-      <tr><td><picture><img src="https://media.tractorsupply.com/is/image/TractorSupplyCompany/forge-flame-logo?scl=1" alt="Forge and Flame" loading="lazy"></picture></td><td><p><a href="/tsc/brand/Forge+%26+Flame">Forge &amp; Flame</a></p></td></tr>
+      <tr><td><picture><img src="/icons/brand-carhartt.svg" alt="Carhartt" loading="lazy"></picture></td><td><p><a href="/tsc/brand/Carhartt">Carhartt</a></p></td></tr>
+      <tr><td><picture><img src="/icons/brand-cub-cadet.svg" alt="Cub Cadet" loading="lazy"></picture></td><td><p><a href="/tsc/brand/Cub+Cadet">Cub Cadet</a></p></td></tr>
+      <tr><td><picture><img src="/icons/brand-purina.svg" alt="Purina" loading="lazy"></picture></td><td><p><a href="/tsc/brand/Purina">Purina</a></p></td></tr>
+      <tr><td><picture><img src="/icons/brand-yeti.svg" alt="YETI" loading="lazy"></picture></td><td><p><a href="/tsc/brand/YETI">YETI</a></p></td></tr>
+      <tr><td><picture><img src="/icons/brand-dewalt.svg" alt="DeWALT" loading="lazy"></picture></td><td><p><a href="/tsc/brand/DeWALT">DeWALT</a></p></td></tr>
+      <tr><td><picture><img src="/icons/brand-blackstone.svg" alt="Blackstone" loading="lazy"></picture></td><td><p><a href="/tsc/brand/Blackstone">Blackstone</a></p></td></tr>
+      <tr><td><picture><img src="/icons/brand-pelpro.svg" alt="Forge and Flame" loading="lazy"></picture></td><td><p><a href="/tsc/brand/Forge+%26+Flame">Forge &amp; Flame</a></p></td></tr>
     </table>
     <hr>
     <!-- Section 14: Smart Supply -->
@@ -317,19 +307,19 @@
     <table>
       <tr><th colspan="2">Cards (store-services)</th></tr>
       <tr>
-        <td><picture><img src="https://media.tractorsupply.com/is/image/TractorSupplyCompany/TSC_Services_Propane?scl=1" alt="Propane Tank Refill" loading="lazy"></picture></td>
+        <td><picture><img src="/icons/svc-propane-tank-refill.svg" alt="Propane Tank Refill" loading="lazy"></picture></td>
         <td><h3>Propane Tank Refill</h3><p>Refilling your propane tank at your local Tractor Supply is convenient and economical.</p><p><strong><a href="/tsc/services/propane-refill">More Info</a></strong></p></td>
       </tr>
       <tr>
-        <td><picture><img src="https://media.tractorsupply.com/is/image/TractorSupplyCompany/TSC_Services_TrailerRental?scl=1" alt="Trailer Rental" loading="lazy"></picture></td>
+        <td><picture><img src="/icons/svc-trailer-rental.svg" alt="Trailer Rental" loading="lazy"></picture></td>
         <td><h3>Trailer Rental</h3><p>Tough job to tackle? Transporting your purchase home? Rent a trailer and get it done!</p><p><strong><a href="/tsc/services/trailer-rental">More Info</a></strong></p></td>
       </tr>
       <tr>
-        <td><picture><img src="https://media.tractorsupply.com/is/image/TractorSupplyCompany/TSC_Services_PetVet?scl=1" alt="Pet Vet Clinic" loading="lazy"></picture></td>
+        <td><picture><img src="/icons/svc-pet-vet-clinic.svg" alt="Pet Vet Clinic" loading="lazy"></picture></td>
         <td><h3>Pet Vet Clinic</h3><p>Get affordable, convenient veterinary care at Tractor Supply\u2019s PetVet Clinics. No appointment needed.</p><p><strong><a href="/tsc/services/petvet">More Info</a></strong></p></td>
       </tr>
       <tr>
-        <td><picture><img src="https://media.tractorsupply.com/is/image/TractorSupplyCompany/TSC_Services_SameDay?scl=1" alt="Same Day Delivery" loading="lazy"></picture></td>
+        <td><picture><img src="/icons/svc-same-day-delivery.svg" alt="Same Day Delivery" loading="lazy"></picture></td>
         <td><h3>Same Day Delivery</h3><p>Receive Same Day Delivery on eligible items purchased in-store and online.</p><p><strong><a href="/tsc/services/same-day-delivery">More Info</a></strong></p></td>
       </tr>
     </table>
