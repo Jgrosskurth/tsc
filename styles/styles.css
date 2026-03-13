@@ -374,10 +374,10 @@ main .section.bright-green a:any-link {
   color: #fff;
 }
 
-/* Rewards banner section (below nav) - full width */
+/* Rewards banner section (below nav) - compact strip */
 main .section.rewards-banner {
   background-color: var(--tsc-cream);
-  padding: 16px 0;
+  padding: 8px 0;
   margin: 0;
   border-bottom: 1px solid #e8e2da;
 }
@@ -389,12 +389,12 @@ main .section.rewards-banner > div {
 main .section.rewards-banner .default-content-wrapper {
   display: flex;
   align-items: center;
-  gap: 24px;
-  flex-wrap: wrap;
+  gap: 16px;
+  flex-wrap: nowrap;
 }
 
 main .section.rewards-banner h2 {
-  font-size: var(--body-font-size-l);
+  font-size: 14px;
   font-weight: 700;
   margin: 0;
   white-space: nowrap;
@@ -402,15 +402,15 @@ main .section.rewards-banner h2 {
 
 main .section.rewards-banner ul {
   display: flex;
-  gap: 16px;
+  gap: 12px;
   list-style: none;
   margin: 0;
   padding: 0;
-  flex-wrap: wrap;
+  flex-wrap: nowrap;
 }
 
 main .section.rewards-banner li {
-  font-size: var(--body-font-size-s);
+  font-size: 13px;
   color: #444;
   white-space: nowrap;
 }
@@ -424,8 +424,8 @@ main .section.rewards-banner a.button:any-link {
   border-color: var(--tsc-red);
   color: #fff;
   border-radius: 100px;
-  padding: 10px 24px;
-  font-size: var(--body-font-size-s);
+  padding: 6px 18px;
+  font-size: 13px;
   font-weight: 600;
   white-space: nowrap;
 }
