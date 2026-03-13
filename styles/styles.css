@@ -429,18 +429,30 @@ main .section.rewards-banner a.button:hover {
 
 @media (width < 900px) {
   main .section.rewards-banner .default-content-wrapper {
-    flex-direction: column;
-    align-items: flex-start;
+    flex-direction: row;
+    align-items: center;
+    justify-content: space-between;
     gap: 12px;
   }
 
+  main .section.rewards-banner h2 {
+    font-size: var(--body-font-size-s);
+    white-space: normal;
+    flex: 1;
+  }
+
   main .section.rewards-banner ul {
-    flex-direction: column;
-    gap: 8px;
+    display: none;
   }
 
   main .section.rewards-banner p:has(a.button) {
     margin: 0;
+    flex-shrink: 0;
+  }
+
+  main .section.rewards-banner a.button:any-link {
+    padding: 8px 16px;
+    font-size: var(--body-font-size-xs);
   }
 }
 
@@ -492,6 +504,11 @@ main > .section.metadata {
   display: none;
 }
 
+/* hide undecorated metadata section (last section with title/description) */
+main > .section:last-child:not(:has(.block)):has(> .default-content-wrapper:only-child) {
+  display: none;
+}
+
 /* full-width banner images */
 /* stylelint-disable-next-line no-descending-specificity */
 main > .section > div > p:has(> a > picture) {
@@ -511,6 +528,7 @@ main > .section > div.default-content-wrapper:has(> p > a > picture):not(:has(h1
 }
 
 /* Ensure banner-only section wrappers have no extra space */
+/* stylelint-disable-next-line no-descending-specificity */
 main > .section:has(> .default-content-wrapper > p > a > picture):not(:has(h1, h2, h3, h4, .block)) {
   padding: 0;
 }

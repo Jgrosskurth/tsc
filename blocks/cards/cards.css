@@ -162,7 +162,7 @@
    ======================================== */
 .cards.brands > ul {
   grid-template-columns: repeat(4, 1fr);
-  gap: 12px;
+  gap: 8px;
   align-items: center;
 }
 
@@ -170,8 +170,8 @@
 .cards.brands > ul > li {
   background-color: #fff;
   border: 1px solid #e6e6e6;
-  border-radius: 12px;
-  padding: 16px 12px;
+  border-radius: 8px;
+  padding: 10px 8px;
   display: flex;
   align-items: center;
   justify-content: center;
@@ -219,7 +219,12 @@
 @media (width >= 600px) {
   .cards.brands > ul {
     grid-template-columns: repeat(4, 1fr);
-    gap: 16px;
+    gap: 12px;
+  }
+
+  .cards.brands > ul > li {
+    padding: 16px 12px;
+    border-radius: 12px;
   }
 
   .cards.brands > ul > li img {

@@ -35,7 +35,13 @@
   position: relative;
   width: 100%;
   min-height: 0;
-  aspect-ratio: 1440 / 480;
+  aspect-ratio: 4 / 3;
+}
+
+@media (width >= 600px) {
+  .carousel .carousel-slide {
+    aspect-ratio: 1440 / 480;
+  }
 }
 
 .carousel .carousel-slide .carousel-slide-image picture {

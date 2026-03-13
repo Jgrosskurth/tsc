@@ -20,7 +20,8 @@
   scroll-behavior: smooth;
   -ms-overflow-style: none;
   scrollbar-width: none;
-  padding-bottom: 4px;
+  padding: 0 40px 4px;
+  scroll-padding-inline: 40px;
 }
 
 .product-carousel-slides::-webkit-scrollbar {
@@ -144,11 +145,23 @@
 .product-carousel-nav {
   position: absolute;
   top: 55%;
-  left: -14px;
-  right: -14px;
+  left: 0;
+  right: 0;
   display: flex;
   justify-content: space-between;
   pointer-events: none;
+}
+
+@media (width >= 600px) {
+  .product-carousel-slides {
+    padding: 0 0 4px;
+    scroll-padding-inline: 0;
+  }
+
+  .product-carousel-nav {
+    left: -14px;
+    right: -14px;
+  }
 }
 
 /* stylelint-disable-next-line no-descending-specificity */
