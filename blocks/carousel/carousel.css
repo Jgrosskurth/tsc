@@ -225,7 +225,7 @@
   /* Override JS aria-hidden — all slides visible in grid */
   .carousel .carousel-slide[aria-hidden="true"] {
     visibility: visible;
-    position: static;
+    position: relative;
     width: auto;
     height: auto;
   }
