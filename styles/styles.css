@@ -309,9 +309,8 @@ main > .section > div {
   padding: 12px 24px;
 }
 
-/* Carousel section: full-bleed with vertical spacing for green bg */
+/* Carousel section: contained with vertical spacing for green bg */
 main > .section.carousel-container > .carousel-wrapper {
-  max-width: unset;
   padding: 0;
 }
 
@@ -374,17 +373,20 @@ main .section.bright-green a:any-link {
   color: #fff;
 }
 
-/* Rewards banner section (below nav) - compact strip */
+/* Rewards banner section (below nav) - contained card */
 main .section.rewards-banner {
   background-color: var(--tsc-cream);
-  padding: 8px 0;
-  margin: 0;
+  box-sizing: border-box;
+  padding: 12px 48px;
+  margin: 4px auto;
+  max-width: 1200px;
+  border-radius: 8px;
   border-bottom: 1px solid #e8e2da;
 }
 
 main .section.rewards-banner > div {
   max-width: none;
-  padding: 0 14px;
+  padding: 0;
 }
 
 main .section.rewards-banner .default-content-wrapper {

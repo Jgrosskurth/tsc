@@ -1,5 +1,4 @@
 .carousel-container .carousel-wrapper {
-  max-width: unset;
   padding: 0;
 }
 
@@ -197,7 +196,7 @@
     gap: 12px;
     overflow: visible;
     scroll-snap-type: none;
-    padding: 0 14px;
+    padding: 0;
   }
 
   .carousel .carousel-slide {
