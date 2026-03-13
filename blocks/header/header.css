@@ -86,7 +86,7 @@ header .nav-logo {
 }
 
 header .nav-logo img {
-  width: 100px;
+  width: 140px;
   height: auto;
 }
 
@@ -394,7 +394,7 @@ header nav[aria-expanded='true'] {
   }
 
   header .nav-logo img {
-    width: 130px;
+    width: 180px;
   }
 
   /* Show all utility items on desktop */

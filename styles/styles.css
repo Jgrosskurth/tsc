@@ -309,10 +309,14 @@ main > .section > div {
   padding: 12px 24px;
 }
 
-/* Carousel section: full-bleed, no padding */
+/* Carousel section: full-bleed with vertical spacing for green bg */
 main > .section.carousel-container > .carousel-wrapper {
   max-width: unset;
   padding: 0;
+}
+
+main > .section.carousel-container {
+  padding: 16px 0;
 }
 
 @media (width >= 900px) {
@@ -370,12 +374,16 @@ main .section.bright-green a:any-link {
   color: #fff;
 }
 
-/* Rewards banner section (below nav) */
+/* Rewards banner section (below nav) - full width */
 main .section.rewards-banner {
   background-color: var(--tsc-cream);
   padding: 16px 0;
   margin: 0;
   border-bottom: 1px solid #e8e2da;
+}
+
+main .section.rewards-banner > div {
+  max-width: 1380px;
 }
 
 main .section.rewards-banner .default-content-wrapper {
@@ -412,8 +420,8 @@ main .section.rewards-banner p:has(a.button) {
 }
 
 main .section.rewards-banner a.button:any-link {
-  background-color: var(--tsc-olive-text);
-  border-color: var(--tsc-olive-text);
+  background-color: var(--tsc-red);
+  border-color: var(--tsc-red);
   color: #fff;
   border-radius: 100px;
   padding: 10px 24px;
@@ -423,8 +431,8 @@ main .section.rewards-banner a.button:any-link {
 }
 
 main .section.rewards-banner a.button:hover {
-  background-color: #4a5739;
-  border-color: #4a5739;
+  background-color: var(--link-hover-color);
+  border-color: var(--link-hover-color);
 }
 
 @media (width < 900px) {
@@ -483,7 +491,7 @@ main > .section.product-carousel-container:not(.columns-container) {
   background-color: #fff;
   border-radius: 16px;
   max-width: 1200px;
-  margin: 16px auto;
+  margin: 20px auto;
   padding: 16px 0;
 }
 
@@ -543,8 +551,8 @@ main > .section > div.default-content-wrapper:has(> p > a > picture):not(:has(h1
   padding: 0;
 }
 
-/* Ensure banner-only section wrappers have no extra space */
+/* Banner-only sections: add vertical spacing for green bg visibility */
 /* stylelint-disable-next-line no-descending-specificity */
 main > .section:has(> .default-content-wrapper > p > a > picture):not(:has(h1, h2, h3, h4, .block)) {
-  padding: 0;
+  padding: 10px 0;
 }
