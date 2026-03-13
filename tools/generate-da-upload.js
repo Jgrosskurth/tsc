@@ -24,9 +24,10 @@ if (!mainMatch) {
   process.exit(1);
 }
 
-// Replace relative /icons/ paths with full aem.page URLs for DA
+// Replace relative paths with full aem.page URLs for DA
 const AEM_PAGE = 'https://main--tsc--jgrosskurth.aem.page';
-const mainContent = mainMatch[1].replace(/src="\/icons\//g, `src="${AEM_PAGE}/icons/`);
+let mainContent = mainMatch[1].replace(/src="\/icons\//g, `src="${AEM_PAGE}/icons/`);
+mainContent = mainContent.replace(/src="\/images\//g, `src="${AEM_PAGE}/images/`);
 
 // Build the DA format body
 const daBody = `<body>
