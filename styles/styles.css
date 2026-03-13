@@ -44,7 +44,7 @@
   --heading-font-size-xs: 16px;
 
   /* nav height */
-  --nav-height: 120px;
+  --nav-height: 145px;
 }
 
 /* fallback fonts */
@@ -476,6 +476,15 @@ main > .section > div > h2 {
   font-size: var(--heading-font-size-l);
   margin-top: 24px;
   margin-bottom: 12px;
+}
+
+/* Product carousel standalone sections: white rounded container */
+main > .section.product-carousel-container:not(.columns-container) {
+  background-color: #fff;
+  border-radius: 16px;
+  max-width: 1200px;
+  margin: 16px auto;
+  padding: 16px 0;
 }
 
 /* Olive-green background for services (overlay) cards */

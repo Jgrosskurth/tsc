@@ -1,0 +1,8 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 170 90" fill="none">
+  <!-- Red shield -->
+  <rect x="2" y="2" width="58" height="42" rx="4" fill="#C02817"/>
+  <text x="31" y="32" text-anchor="middle" font-family="Georgia, serif" font-size="24" font-weight="bold" fill="#fff">TSC</text>
+  <!-- Company name -->
+  <text x="0" y="62" font-family="Georgia, serif" font-size="13" font-weight="bold" fill="#C02817" letter-spacing="0.5">TRACTOR</text>
+  <text x="0" y="77" font-family="Georgia, serif" font-size="13" font-weight="bold" fill="#C02817" letter-spacing="0.5">SUPPLY CO.</text>
+</svg>

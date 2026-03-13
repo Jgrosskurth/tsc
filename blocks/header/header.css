@@ -1,7 +1,7 @@
 /* ========================================
    TSC Header - Three-tier layout
    1. Announcement bar (red, full width)
-   2. Main header (white: logo + nav tools)
+   2. Main header (white: logo + utility + search)
    3. Category nav (white, border-bottom)
    ======================================== */
 
@@ -17,12 +17,8 @@ header .nav-wrapper {
 
 header nav {
   box-sizing: border-box;
-  display: flex;
-  flex-wrap: wrap;
-  align-items: center;
   margin: auto;
-  max-width: 1264px;
-  padding: 0 16px;
+  max-width: 1380px;
   font-family: var(--body-font-family);
 }
 
@@ -36,57 +32,219 @@ header nav a:any-link {
   text-decoration: none;
 }
 
-/* ---- Tier 1: Announcement bar (red, full viewport width) ---- */
+/* ---- Tier 1: Announcement bar ---- */
 header .nav-announcement {
   background-color: var(--tsc-red);
   color: #fff;
-  text-align: center;
-  padding: 6px 16px;
-  font-size: var(--body-font-size-xs);
+  font-size: 13px;
   font-weight: 500;
+  padding: 6px 16px;
+}
+
+.nav-announcement-inner {
+  max-width: 1380px;
+  margin: 0 auto;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.nav-announcement-left {
+  display: flex;
+  align-items: center;
+  gap: 4px;
+}
+
+.nav-announcement-sep {
+  margin: 0 4px;
+  opacity: 0.6;
+}
+
+.nav-announcement-right {
+  display: none;
 }
 
 header .nav-announcement a:any-link {
   color: #fff;
   font-weight: 700;
   text-decoration: underline;
-  margin-left: 8px;
 }
 
 /* ---- Tier 2: Main header row ---- */
 header .nav-brand {
   display: flex;
   align-items: center;
-  padding: 10px 0;
-  gap: 16px;
-  flex: 1;
-  min-width: 0;
+  padding: 8px 16px;
+  gap: 12px;
 }
 
-header nav .nav-brand img {
-  width: 140px;
+/* Logo */
+header .nav-logo {
+  display: flex;
+  align-items: center;
+  flex-shrink: 0;
+}
+
+header .nav-logo img {
+  width: 100px;
   height: auto;
 }
 
-header nav .nav-brand a:any-link {
-  font-family: var(--heading-font-family);
-  font-size: 20px;
-  font-weight: 700;
-  color: var(--tsc-red);
+/* Utility items container */
+header .nav-utility {
+  display: flex;
+  align-items: center;
+  flex: 1;
+  gap: 4px;
+  min-width: 0;
+  justify-content: flex-end;
+}
+
+/* Utility buttons (store, deliver, sign-in) */
+header .nav-util-btn {
+  display: none;
+  align-items: center;
+  gap: 6px;
+  padding: 6px 8px;
+  border: none;
+  background: none;
+  cursor: pointer;
+  border-radius: 6px;
+  font-family: var(--body-font-family);
   text-decoration: none;
+  color: var(--text-color);
+  white-space: nowrap;
+}
+
+header .nav-util-btn:hover {
+  background-color: #f5f5f5;
+}
+
+header .nav-util-icon {
+  display: flex;
+  align-items: center;
+  flex-shrink: 0;
+}
+
+header .nav-util-icon svg {
+  width: 22px;
+  height: 22px;
+  color: #333;
+}
+
+header .nav-user-icon svg {
+  width: 26px;
+  height: 26px;
+  color: var(--tsc-red);
+}
+
+header .nav-util-text {
+  display: flex;
+  flex-direction: column;
+  text-align: left;
+  line-height: 1.2;
+}
+
+header .nav-util-primary {
+  font-size: 13px;
+  font-weight: 700;
+  color: var(--text-color);
+}
+
+header .nav-util-secondary {
+  font-size: 11px;
+  color: #666;
+}
+
+header .nav-reward {
+  color: var(--tsc-red);
+  font-weight: 600;
+}
+
+/* Search bar */
+header .nav-search {
+  display: none;
+  align-items: center;
+  flex: 1;
+  max-width: 520px;
+  height: 40px;
+  border: 1px solid #ccc;
+  border-radius: 4px;
+  padding: 0 8px;
+  background: #fff;
+  gap: 8px;
+}
+
+header .nav-search-icon {
+  display: flex;
+  align-items: center;
+  flex-shrink: 0;
+}
+
+header .nav-search-icon svg {
+  width: 18px;
+  height: 18px;
+  color: #666;
+}
+
+header .nav-search input {
+  flex: 1;
+  border: none;
+  outline: none;
+  font-size: 14px;
+  font-family: var(--body-font-family);
+  color: var(--text-color);
+  background: transparent;
+  min-width: 0;
+}
+
+header .nav-search input::placeholder {
+  color: #999;
+}
+
+header .nav-mic-btn {
+  display: flex;
+  align-items: center;
+  border: none;
+  background: none;
+  cursor: pointer;
+  padding: 2px;
+}
+
+header .nav-mic-btn svg {
+  width: 18px;
+  height: 18px;
+  color: #666;
+}
+
+/* Cart link */
+header .nav-cart-link {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 8px;
+  color: var(--text-color);
+  text-decoration: none;
+}
+
+header .nav-cart-icon {
   display: flex;
   align-items: center;
 }
 
-/* ---- Tier 3: Category nav (sections) ---- */
+header .nav-cart-icon svg {
+  width: 26px;
+  height: 26px;
+  color: #333;
+}
+
+/* ---- Tier 3: Category nav ---- */
 header nav .nav-sections {
   display: none;
   visibility: hidden;
   border-top: 1px solid #e6e6e6;
-  padding: 0;
+  padding: 0 16px;
   width: 100%;
-  flex-basis: 100%;
-  order: 4;
 }
 
 header nav[aria-expanded='true'] .nav-sections {
@@ -201,39 +359,6 @@ header nav[aria-expanded='true'] {
   min-height: 100dvh;
 }
 
-/* ---- Tools (Find a Store, Cart) ---- */
-header nav .nav-tools {
-  display: flex;
-  align-items: center;
-  padding: 10px 0;
-}
-
-/* stylelint-disable-next-line no-descending-specificity */
-header nav .nav-tools ul {
-  list-style: none;
-  padding: 0;
-  margin: 0;
-  display: flex;
-  gap: 8px;
-  align-items: center;
-}
-
-header nav .nav-tools a:any-link {
-  font-size: var(--body-font-size-xs);
-  font-weight: 600;
-  color: var(--text-color);
-  padding: 6px 12px;
-  border-radius: 100px;
-  border: 1px solid #e6e6e6;
-  text-decoration: none;
-  white-space: nowrap;
-}
-
-header nav .nav-tools a:hover {
-  background-color: var(--light-color);
-  text-decoration: none;
-}
-
 /* ========================================
    Desktop (900px+)
    ======================================== */
@@ -242,24 +367,56 @@ header nav .nav-tools a:hover {
     position: relative;
   }
 
-  header nav {
-    padding: 0 32px;
+  /* Announcement bar: side-by-side */
+  .nav-announcement-inner {
+    justify-content: space-between;
   }
 
+  .nav-announcement-right {
+    display: flex;
+    gap: 16px;
+  }
+
+  .nav-announcement-right a:any-link {
+    font-weight: 400;
+    text-decoration: none;
+    font-size: 12px;
+  }
+
+  .nav-announcement-right a:hover {
+    text-decoration: underline;
+  }
+
+  /* Main header row */
+  header .nav-brand {
+    padding: 10px 32px;
+    gap: 16px;
+  }
+
+  header .nav-logo img {
+    width: 130px;
+  }
+
+  /* Show all utility items on desktop */
+  header .nav-util-btn {
+    display: flex;
+  }
+
+  header .nav-search {
+    display: flex;
+  }
+
+  header nav .nav-utility {
+    gap: 6px;
+  }
+
+  /* Hamburger hidden on desktop */
   header nav .nav-hamburger {
     display: none;
     visibility: hidden;
   }
 
-  header .nav-brand {
-    padding: 12px 0;
-  }
-
-  header nav .nav-brand img {
-    width: 160px;
-  }
-
-  /* Desktop: category nav visible */
+  /* Category nav visible on desktop */
   header nav .nav-sections {
     display: block;
     visibility: visible;
@@ -267,7 +424,8 @@ header nav .nav-tools a:hover {
     overflow-x: auto;
     -ms-overflow-style: none;
     scrollbar-width: none;
-    padding: 0;
+    padding: 0 32px;
+    border-top: 1px solid #e6e6e6;
   }
 
   header nav .nav-sections::-webkit-scrollbar {
@@ -365,10 +523,5 @@ header nav .nav-tools a:hover {
 
   header nav .nav-sections .default-content-wrapper > ul > li > ul > li {
     padding: 8px 0;
-  }
-
-  header nav .nav-tools a:any-link {
-    font-size: var(--body-font-size-s);
-    padding: 8px 16px;
   }
 }

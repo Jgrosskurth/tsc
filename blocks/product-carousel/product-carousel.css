@@ -204,14 +204,14 @@
 
 /* Section with product carousel + feature tile */
 main > .section:has(.columns):has(.product-carousel) {
-  background-color: var(--tsc-olive-green);
+  background-color: #fff;
   border-radius: 16px;
   max-width: 1200px;
   margin: 16px auto;
   padding: 20px;
 }
 
-/* Feature tile blends with green section on all viewports */
+/* Feature tile within white section */
 main > .section:has(.columns):has(.product-carousel) .columns > div {
   background-color: transparent;
   border-radius: 0;
