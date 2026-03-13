@@ -384,8 +384,7 @@ main .section.rewards-banner {
 
 main .section.rewards-banner > div {
   max-width: none;
-  padding-left: 0;
-  padding-right: 0;
+  padding: 0 14px;
 }
 
 main .section.rewards-banner .default-content-wrapper {

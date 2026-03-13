@@ -217,6 +217,33 @@ main > .section:has(.columns):has(.product-carousel) .columns > div {
   border-radius: 0;
 }
 
+/* Feature tile text-side background colors (matching original TSC site) */
+
+/* Light gray bg for text-first tiles (Pets, Chick Days, Smart Supply) */
+main > .section:has(.columns-text-first):has(.product-carousel) .columns > div > div:first-child {
+  background-color: #faf6f4;
+  padding: 24px;
+  border-radius: 12px;
+}
+
+/* Bright green bg for image-first tiles (Dig into spring, Exclusive trailers) */
+main > .section:has(.columns:not(.columns-text-first)):has(.product-carousel) .columns > div > div:last-child {
+  background-color: #7d9c29;
+  padding: 24px;
+  border-radius: 12px;
+}
+
+main > .section:has(.columns:not(.columns-text-first)):has(.product-carousel) .columns > div > div:last-child h3,
+main > .section:has(.columns:not(.columns-text-first)):has(.product-carousel) .columns > div > div:last-child p {
+  color: #fff;
+}
+
+main > .section:has(.columns:not(.columns-text-first)):has(.product-carousel) .columns > div > div:last-child a.button:any-link {
+  background-color: #fff;
+  border-color: #fff;
+  color: #7d9c29;
+}
+
 /* ======================================
    Desktop: side-by-side with columns
    ====================================== */
