@@ -484,6 +484,12 @@ main > .section:has(.cards.services) {
   padding: 24px 0;
 }
 
+/* Olive-green background for categories row */
+main > .section:has(.cards.categories) {
+  background-color: var(--tsc-olive-green);
+  padding: 24px 0;
+}
+
 /* Store Services section */
 main > .section:has(.cards.store-services) {
   background-color: var(--tsc-olive-green);

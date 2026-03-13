@@ -185,10 +185,57 @@
   }
 }
 
-/* Desktop: keep carousel sliding, just widen nav button spacing */
+/* ========================================
+   Desktop: show all 3 banners in a grid
+   (matches original TSC hero layout)
+   ======================================== */
 @media (width >= 900px) {
+  .carousel .carousel-slides {
+    display: grid;
+    grid-template-columns: 3fr 2fr;
+    grid-template-rows: 1fr 1fr;
+    gap: 12px;
+    overflow: visible;
+    scroll-snap-type: none;
+    padding: 0 16px;
+  }
+
+  .carousel .carousel-slide {
+    flex: unset;
+    scroll-snap-align: unset;
+    aspect-ratio: unset;
+    min-height: 0;
+    border-radius: 12px;
+    overflow: hidden;
+  }
+
+  /* First slide: large hero spanning both rows on the left */
+  .carousel .carousel-slide:first-child {
+    grid-column: 1;
+    grid-row: 1 / -1;
+  }
+
+  /* Second and third slides: stacked on the right with explicit sizing */
+  .carousel .carousel-slide:nth-child(2),
+  .carousel .carousel-slide:nth-child(3) {
+    grid-column: 2;
+    aspect-ratio: 2 / 1;
+  }
+
+  /* Override JS aria-hidden — all slides visible in grid */
+  .carousel .carousel-slide[aria-hidden="true"] {
+    visibility: visible;
+    position: static;
+    width: auto;
+    height: auto;
+  }
+
+  /* Hide navigation buttons and indicators on desktop grid */
   .carousel .carousel-navigation-buttons {
-    left: 40px;
-    right: 40px;
+    display: none;
+  }
+
+  .carousel .carousel-slide-indicators {
+    display: none;
   }
 }

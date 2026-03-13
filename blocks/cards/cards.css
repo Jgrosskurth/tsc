@@ -68,17 +68,30 @@
 }
 
 /* ========================================
-   Categories variant - circular icon grid
+   Categories variant - horizontal scroll row
    ======================================== */
 .cards.categories > ul {
-  grid-template-columns: repeat(4, 1fr);
+  display: flex;
   gap: 8px;
+  overflow-x: auto;
+  scroll-snap-type: x mandatory;
+  scroll-behavior: smooth;
+  -ms-overflow-style: none;
+  scrollbar-width: none;
+  padding: 0 4px 4px;
+}
+
+.cards.categories > ul::-webkit-scrollbar {
+  display: none;
 }
 
 .cards.categories > ul > li {
   background-color: transparent;
   border-radius: 0;
   box-shadow: none;
+  flex: 0 0 auto;
+  scroll-snap-align: start;
+  min-width: 72px;
 }
 
 .cards.categories > ul > li:hover {
@@ -130,7 +143,6 @@
 
 @media (width >= 600px) {
   .cards.categories > ul {
-    grid-template-columns: repeat(8, 1fr);
     gap: 12px;
   }
 
@@ -147,8 +159,11 @@
 
 @media (width >= 900px) {
   .cards.categories > ul {
-    grid-template-columns: repeat(8, 1fr);
     gap: 16px;
+  }
+
+  .cards.categories > ul > li {
+    min-width: 96px;
   }
 
   .cards.categories > ul > li img {
