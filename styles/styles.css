@@ -304,7 +304,7 @@ main > .section {
 }
 
 main > .section > div {
-  max-width: 1200px;
+  max-width: 1440px;
   margin: auto;
   padding: 12px 24px;
 }
@@ -379,7 +379,7 @@ main .section.rewards-banner {
   box-sizing: border-box;
   padding: 12px 48px;
   margin: 4px auto;
-  max-width: 1200px;
+  max-width: 1440px;
   border-radius: 8px;
   border-bottom: 1px solid #e8e2da;
 }
@@ -493,7 +493,7 @@ main > .section > div > h2 {
 main > .section.product-carousel-container:not(.columns-container) {
   background-color: #fff;
   border-radius: 16px;
-  max-width: 1200px;
+  max-width: 1440px;
   margin: 20px auto;
   padding: 16px 0;
 }
