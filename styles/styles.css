@@ -370,6 +370,80 @@ main .section.bright-green a:any-link {
   color: #fff;
 }
 
+/* Rewards banner section (below nav) */
+main .section.rewards-banner {
+  background-color: var(--tsc-cream);
+  padding: 16px 0;
+  margin: 0;
+  border-bottom: 1px solid #e8e2da;
+}
+
+main .section.rewards-banner .default-content-wrapper {
+  display: flex;
+  align-items: center;
+  gap: 24px;
+  flex-wrap: wrap;
+}
+
+main .section.rewards-banner h2 {
+  font-size: var(--body-font-size-l);
+  font-weight: 700;
+  margin: 0;
+  white-space: nowrap;
+}
+
+main .section.rewards-banner ul {
+  display: flex;
+  gap: 16px;
+  list-style: none;
+  margin: 0;
+  padding: 0;
+  flex-wrap: wrap;
+}
+
+main .section.rewards-banner li {
+  font-size: var(--body-font-size-s);
+  color: #444;
+  white-space: nowrap;
+}
+
+main .section.rewards-banner p:has(a.button) {
+  margin: 0 0 0 auto;
+}
+
+main .section.rewards-banner a.button:any-link {
+  background-color: var(--tsc-olive-text);
+  border-color: var(--tsc-olive-text);
+  color: #fff;
+  border-radius: 100px;
+  padding: 10px 24px;
+  font-size: var(--body-font-size-s);
+  font-weight: 600;
+  white-space: nowrap;
+}
+
+main .section.rewards-banner a.button:hover {
+  background-color: #4a5739;
+  border-color: #4a5739;
+}
+
+@media (width < 900px) {
+  main .section.rewards-banner .default-content-wrapper {
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 12px;
+  }
+
+  main .section.rewards-banner ul {
+    flex-direction: column;
+    gap: 8px;
+  }
+
+  main .section.rewards-banner p:has(a.button) {
+    margin: 0;
+  }
+}
+
 /* disclaimer section */
 main .section.disclaimer {
   background-color: var(--light-color);
@@ -377,6 +451,7 @@ main .section.disclaimer {
   padding: 24px 0;
 }
 
+/* stylelint-disable-next-line no-descending-specificity */
 main .section.disclaimer p {
   font-size: var(--body-font-size-xs);
   color: #555;
@@ -398,6 +473,11 @@ main > .section:has(.cards.services) {
 }
 
 /* Store Services section */
+main > .section:has(.cards.store-services) {
+  background-color: var(--tsc-olive-green);
+  padding: 24px 0;
+}
+
 main > .section:has(.cards.store-services) > .default-content-wrapper {
   padding-bottom: 0;
 }
