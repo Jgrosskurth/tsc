@@ -197,7 +197,7 @@
     gap: 12px;
     overflow: visible;
     scroll-snap-type: none;
-    padding: 0 16px;
+    padding: 0;
   }
 
   .carousel .carousel-slide {

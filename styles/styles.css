@@ -383,7 +383,9 @@ main .section.rewards-banner {
 }
 
 main .section.rewards-banner > div {
-  max-width: 1380px;
+  max-width: none;
+  padding-left: 0;
+  padding-right: 0;
 }
 
 main .section.rewards-banner .default-content-wrapper {
