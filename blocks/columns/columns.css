@@ -95,6 +95,13 @@
   border-color: var(--tsc-cream);
 }
 
+/* Feature tile on olive-green section backgrounds */
+/* stylelint-disable-next-line no-descending-specificity */
+main > .section.columns-container:not(.product-carousel-container) .columns > div {
+  background-color: transparent;
+  border-radius: 0;
+}
+
 @media (width >= 900px) {
   .columns > div {
     align-items: stretch;

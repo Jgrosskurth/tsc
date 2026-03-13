@@ -490,6 +490,12 @@ main > .section:has(.cards.store-services) {
   padding: 24px 0;
 }
 
+/* Standalone columns feature tile sections */
+main > .section.columns-container:not(.product-carousel-container) {
+  background-color: var(--tsc-olive-green);
+  padding: 24px 0;
+}
+
 main > .section:has(.cards.store-services) > .default-content-wrapper {
   padding-bottom: 0;
 }
