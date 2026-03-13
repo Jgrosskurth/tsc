@@ -215,6 +215,12 @@
     grid-row: 1 / -1;
   }
 
+  /* First slide image: contain so promo text is never cropped */
+  .carousel .carousel-slide:first-child .carousel-slide-image picture > img {
+    object-fit: contain;
+    background-color: #fff;
+  }
+
   /* Second and third slides: stacked on the right with explicit sizing */
   .carousel .carousel-slide:nth-child(2),
   .carousel .carousel-slide:nth-child(3) {
