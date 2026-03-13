@@ -44,6 +44,23 @@ async function loadFonts() {
 }
 
 /**
+ * Merges a standalone columns section with an adjacent product-carousel section.
+ * On the live site, content may have these blocks in separate sections.
+ * Combining them lets the existing CSS grid layout work correctly.
+ * @param {Element} main The container element
+ */
+function mergeProductSections(main) {
+  [...main.querySelectorAll(':scope > div')].forEach((section) => {
+    const hasColumns = section.querySelector(':scope > .columns');
+    if (!hasColumns || section.querySelector(':scope > .product-carousel')) return;
+    const next = section.nextElementSibling;
+    if (!next || !next.querySelector(':scope > .product-carousel')) return;
+    while (next.firstChild) section.appendChild(next.firstChild);
+    next.remove();
+  });
+}
+
+/**
  * Builds all synthetic blocks in a container element.
  * @param {Element} main The container element
  */
@@ -68,6 +85,7 @@ function buildAutoBlocks(main) {
     }
 
     buildHeroBlock(main);
+    mergeProductSections(main);
   } catch (error) {
     // eslint-disable-next-line no-console
     console.error('Auto Blocking failed', error);
